@@ -126,3 +126,57 @@ footer {
   color: #1a7f37;
   font-weight: bold;
 }
+
+/* Supabase version of the task manager */
+.task-form button.secondary {
+  margin-top: 0;
+  color: #1f4e9c;
+  background: #ffffff;
+  border: 2px solid #1f4e9c;
+}
+
+.user-bar {
+  margin-top: 0;
+  color: #616e7c;
+}
+
+.link-button {
+  padding: 0;
+  font: inherit;
+  color: #1f4e9c;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.task-list li.task-row {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-row .task-title {
+  flex: 1;
+  word-break: break-word;
+}
+
+.task-row.done .task-title {
+  color: #9aa5b1;
+  text-decoration: line-through;
+}
+
+.delete-button {
+  padding: 4px 10px;
+  font-size: 14px;
+  color: #c81e1e;
+  background: #ffffff;
+  border: 1px solid #c81e1e;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  color: #ffffff;
+  background: #c81e1e;
+}
