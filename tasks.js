@@ -17,6 +17,7 @@ const taskList = document.getElementById("taskList");
 const errorMessage = document.getElementById("error");
 const titleError = document.getElementById("titleError");
 const successMessage = document.getElementById("success");
+const onlyNotDoneCheckbox = document.getElementById("onlyNotDone");
 
 let successTimer = null;
 
@@ -40,7 +41,7 @@ function renderTasks(tasks) {
   if (tasks.length === 0) {
     const empty = document.createElement("li");
     empty.className = "empty";
-    empty.textContent = "No tasks yet.";
+    empty.textContent = onlyNotDoneCheckbox.checked ? "No not-done tasks. Well done!" : "No tasks yet.";
     taskList.appendChild(empty);
     return;
   }
@@ -62,6 +63,12 @@ function renderTasks(tasks) {
     title.className = "task-title";
     title.textContent = task.title;
 
+    // Small label with the priority (old tasks get "normal" from the DEFAULT)
+    const priority = task.priority || "normal";
+    const label = document.createElement("span");
+    label.className = "priority-label priority-" + priority;
+    label.textContent = priority;
+
     // Delete button (DELETE)
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
@@ -73,6 +80,7 @@ function renderTasks(tasks) {
 
     item.appendChild(checkbox);
     item.appendChild(title);
+    item.appendChild(label);
     item.appendChild(deleteButton);
     taskList.appendChild(item);
   });
@@ -81,21 +89,29 @@ function renderTasks(tasks) {
 // ---------- CRUD ----------
 
 // Read — show the tasks (SELECT)
-async function loadTasks() {
-  const { data, error } = await supabase
+// onlyNotDone = true  -> only rows WHERE done = false
+// onlyNotDone = false -> all rows
+async function loadTasks(onlyNotDone = onlyNotDoneCheckbox.checked) {
+  let query = supabase
     .from("tasks")
     .select("*")
     .order("created_at", { ascending: false });
+
+  if (onlyNotDone) {
+    query = query.eq("done", false); // like SQL: WHERE done = false
+  }
+
+  const { data, error } = await query;
 
   if (error) { alert("Could not load tasks: " + error.message); return; }
   renderTasks(data);
 }
 
 // Create — add a task (INSERT)
-async function addTask(title) {
+async function addTask(title, chosenPriority) {
   const { error } = await supabase
     .from("tasks")
-    .insert({ title: title }); // user_id is filled in by the server for a logged-in user
+    .insert({ title: title, priority: chosenPriority }); // user_id is filled in by the server for a logged-in user
 
   if (error) { alert("Could not add task: " + error.message); return; }
   showSuccess("Task added");
@@ -145,8 +161,16 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  addTask(title);
+  const chosenPriority = document.getElementById("priority").value; // low, normal or high
+  addTask(title, chosenPriority);
   form.reset();
+});
+
+// ---------- Filter ----------
+
+// Checked: only not-done tasks. Empty: all tasks again.
+onlyNotDoneCheckbox.addEventListener("change", function () {
+  loadTasks(onlyNotDoneCheckbox.checked);
 });
 
 // ---------- Login (Supabase Auth) ----------

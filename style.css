@@ -180,3 +180,35 @@ footer {
   color: #ffffff;
   background: #c81e1e;
 }
+
+/* Module 4 homework: priority labels and filter */
+.priority-label {
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+
+.priority-low {
+  color: #1f4e9c;
+  background: #e0ebff;
+}
+
+.priority-normal {
+  color: #52606d;
+  background: #e4e7eb;
+}
+
+.priority-high {
+  color: #ffffff;
+  background: #c81e1e;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}

@@ -45,6 +45,13 @@
           <input type="text" id="title" placeholder="For example: Read chapter 3">
           <p id="titleError" class="error field-error"></p>
 
+          <label for="priority">Priority</label>
+          <select id="priority">
+            <option value="low">low</option>
+            <option value="normal" selected>normal</option>
+            <option value="high">high</option>
+          </select>
+
           <button type="submit">Add</button>
           <p id="error" class="error"></p>
           <p id="success" class="success"></p>
@@ -53,6 +60,10 @@
 
       <section>
         <h2>Task list</h2>
+        <label class="filter">
+          <input type="checkbox" id="onlyNotDone">
+          Show only not-done tasks
+        </label>
         <ul id="taskList" class="task-list"></ul>
       </section>
     </div>
