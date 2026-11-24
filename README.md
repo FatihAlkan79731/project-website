@@ -35,6 +35,22 @@ You can also download the repository and open `index.html` in any web browser.
 - [ ] The page has a "Contact" section with an email address.
 - [ ] Clicking the email address opens a new email in the visitor's mail program.
 
+**Story 4**
+
+> As a mobile phone user, I want the page to fit my small screen, so that I can read it without zooming in or scrolling sideways.
+
+- [ ] On a screen 375 pixels wide, the page has no horizontal scroll bar.
+- [ ] All sections are shown in one column, one under another.
+- [ ] The main text is at least 16 pixels high, so it is easy to read without zooming.
+
+**Story 5**
+
+> As a visitor, I want a navigation menu with links to every section, so that I can jump straight to the part of the page that I need.
+
+- [ ] A menu with links to "About", "Features" and "Contact" is visible at the top of the page.
+- [ ] Clicking a link moves the page to the correct section.
+- [ ] The menu works on both a computer and a mobile phone.
+
 ## Actors
 
 - **Visitor** – a person (for example a classmate) who opens the website to learn about the project and to contact the author.
@@ -95,6 +111,12 @@ flowchart LR
 6. Navigation menu with links to every section
 7. Screenshot gallery of the project
 8. Dark mode switch
+
+## Agile in the real world
+
+Spotify, the Swedish company behind the Spotify music and podcast app, is a well-known example of an Agile organisation. Its developers work in small teams called squads, usually 6 to 12 people, and each squad owns one part of the app, such as search or playlists. Every squad has its own product owner and chooses its own way of working, for example Scrum with Sprints, planning meetings and retrospectives, or Kanban. Because each squad releases small changes often and tests new ideas on real users, Spotify gets fast feedback and can quickly fix a problem or drop an idea that people do not like. This also makes it easy to change the plan, because a squad only has to adjust its next small step instead of a whole year of work.
+
+Source: [Atlassian – Discover the Spotify model](https://www.atlassian.com/agile/agile-at-scale/spotify)
 
 ## Author
 
