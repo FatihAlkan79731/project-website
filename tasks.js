@@ -147,12 +147,13 @@ form.addEventListener("submit", function (event) {
   titleError.textContent = "";
   errorMessage.textContent = "";
 
-  const title = document.getElementById("title").value.trim();
+  // formatTaskTitle (js/utils.js) trims the title and returns null if it is empty
+  const title = formatTaskTitle(document.getElementById("title").value);
 
-  if (title === "") {
-    titleError.textContent = "Please enter a task title.";
+  if (title === null) {
+    titleError.textContent = "The task title cannot be empty.";
     errorMessage.textContent = "The task was not added. Please fix the errors above.";
-    return;
+    return; // do not save the task
   }
 
   if (title.length > 60) {
