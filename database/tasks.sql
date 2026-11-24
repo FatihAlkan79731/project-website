@@ -2,7 +2,8 @@
 -- (run once in the Supabase SQL Editor of the class project)
 CREATE TABLE tasks (
   id         bigserial PRIMARY KEY,
-  user_id    uuid,
+  -- DEFAULT auth.uid(): the server fills in the id of the logged-in user
+  user_id    uuid DEFAULT auth.uid() REFERENCES auth.users (id) ON DELETE CASCADE,
   title      text,
   done       boolean DEFAULT false,
   created_at timestamptz DEFAULT now()

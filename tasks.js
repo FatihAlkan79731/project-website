@@ -1,9 +1,9 @@
 // This file is loaded with <script type="module"> (see tasks.html),
 // so "const supabase" below does not clash with the library's global "supabase".
 
-// Use the URL and key your teacher gave you
-const SUPABASE_URL = "https://xxxxx.supabase.co"; // <-- your project URL
-const SUPABASE_KEY = "eyJhbGciOi...";             // <-- your anon key
+// Supabase project URL and publishable (anon) key — safe in a web page because RLS protects the data
+const SUPABASE_URL = "https://pdvjgavijyxpdogxgmkl.supabase.co"; // <-- your project URL
+const SUPABASE_KEY = "sb_publishable_1vnACyln-VZY9fPZBspilQ_I_MByPnx"; // <-- your publishable anon key
 
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
