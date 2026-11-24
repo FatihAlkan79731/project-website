@@ -28,3 +28,9 @@ test("rejects a title with only tabs (negative test)", () => {
   const result = formatTaskTitle("\t\t");
   assert.equal(result, null); // assertion 5
 });
+
+test("rejects a value that is not text, like the number 42 (negative test)", () => {
+  const result = formatTaskTitle(42);
+  assert.equal(result, null); // assertion 6: a number is not a valid title
+  assert.equal(formatTaskTitle(undefined), null); // assertion 7: no value at all
+});
