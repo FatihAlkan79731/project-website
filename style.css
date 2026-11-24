@@ -115,3 +115,14 @@ footer {
 .task-list .empty {
   color: #616e7c;
 }
+
+.field-error {
+  font-size: 14px;
+}
+
+.success {
+  min-height: 1em;
+  margin: 0;
+  color: #1a7f37;
+  font-weight: bold;
+}
